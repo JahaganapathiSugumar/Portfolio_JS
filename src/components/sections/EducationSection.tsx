@@ -8,7 +8,7 @@ const education = [
 		institution: "Kongu Engineering College",
 		degree: "BE in Computer Science and Engineering",
 		period: "2022 - 2026",
-		cgpa: "7.91/10 (Till 5th Semester)",
+		cgpa: "7.98/10 (Till 6th Semester)",
 		description:
 			"Pursuing a bachelor's degree with a focus on computer science fundamentals, software engineering, and real-world project development.",
 		location: "Erode, Tamil Nadu",
