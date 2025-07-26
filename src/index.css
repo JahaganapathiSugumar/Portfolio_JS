@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border selection:bg-[#7f5af0]/10 selection:text-[#7f5af0];
+  }
+  
+  html {
+    @apply scroll-smooth;
+    height: 100%;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background-color: #f9f9f9;
+    color: #333333;
+  }
+
+  section {
+    @apply py-12 md:py-16; /* Reduced from py-16 md:py-24 */
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .glass-morphism {
+    @apply backdrop-blur-xl bg-white/90 border border-gray-200 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)];
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-br from-[#7f5af0] via-[#7f5af0]/90 to-[#7f5af0]/70 bg-clip-text text-transparent;
+  }
+
+  .fill-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s ease;
+    border-radius: 9999px !important;
+  }
+  
+  .fill-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #7f5af0;
+    z-index: -1;
+    transition: width 0.3s ease;
+  }
+  
+  .fill-button:hover::before {
+    width: 100%;
+  }
+  
+  .fill-button:hover {
+    color: white !important;
+  }
+  
+  .fill-button:hover span {
+    color: white !important;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Animation utilities */
+  .fade-up {
+    @apply opacity-0 translate-y-8;
+    animation: fadeUp 0.8s forwards;
+  }
+  
+  .stagger-fade-up > * {
+    @apply opacity-0 translate-y-8;
+  }
+  
+  .stagger-fade-up > *:nth-child(1) { animation: fadeUp 0.8s 0.1s forwards; }
+  .stagger-fade-up > *:nth-child(2) { animation: fadeUp 0.8s 0.2s forwards; }
+  .stagger-fade-up > *:nth-child(3) { animation: fadeUp 0.8s 0.3s forwards; }
+  .stagger-fade-up > *:nth-child(4) { animation: fadeUp 0.8s 0.4s forwards; }
+  .stagger-fade-up > *:nth-child(5) { animation: fadeUp 0.8s 0.5s forwards; }
+  
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cursor-follow {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(183, 15, 15, 0.716);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: difference;
+  z-index: 9999;
+  transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+}
+
+.scrolling-text-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scrolling-text {
+  display: inline-block;
+  animation: scroll-text 30s linear infinite;
+  padding-right: 2rem;
+}
+
+.progress-bar {
+  height: 3px;
+  background-color: #7f5af0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: width 0.1s ease;
+}
+
+@keyframes scroll-text {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Project card animations */
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* Certificate hover effect */
+.certificate-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-image {
+  transition: transform 0.5s ease;
+}
+
+.certificate-card:hover .certificate-image {
+  transform: scale(1.1);
+}
+
+/* Fix social icons hover visibility */
+.social-icon:hover {
+  color: #7f5af0;
+  opacity: 1 !important;
+}
+
+/* Loading body state */
+body.loading {
+  overflow: hidden;
+}
+
+/* Only hide the content during preloading, not the entire body */
+body.loading main,
+body.loading footer {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Section transitions */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover glow effects */
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(127, 90, 240, 0.5);
+}
+
+.hover-glow-green:hover {
+  box-shadow: 0 0 15px rgba(44, 182, 125, 0.5);
+}
+
+/* Add alternating section colors */
+section:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
+section:nth-of-type(odd) {
+  background-color: #f0f0f7;
+}
+
+/* Section transition animation */
+section {
+  transition: background-color 0.4s ease;
+}
+
+/* Remove the credential hover glitch in hero section */
+.credential-info {
+  display: none !important;
+}
