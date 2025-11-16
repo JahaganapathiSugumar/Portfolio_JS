@@ -9,8 +9,7 @@ const experiences = [
     title: "AI/ML Developer cum Trainer",
     period: "Sep 2025 - Present",
     location: "Remote, Kanyakumari, Tamil Nadu",
-    description:
-      "Selected for the position of AI/ML Developer cum Trainer at Combo Square under their Job Program. This role provides real-time project exposure, mentorship, branding experience, software development, design, and marketing involvement.",
+    description:"Selected for the position of AI/ML Developer cum Trainer at Combo Square under their Job Program. This role provides real-time project exposure, mentorship, branding experience, software development, design, and marketing involvement.",
     responsibilities: [
       "Working on in-house and client-based AI/ML and software development projects",
       "Training internship and course students on AI/ML concepts and tools",
