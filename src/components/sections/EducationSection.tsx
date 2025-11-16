@@ -4,7 +4,20 @@ import { GraduationCap, ExternalLink, Calendar, MapPin } from "lucide-react";
 
 const education = [
 	{
-		id: 1,
+	  	id: 1,
+	  	institution: "Indian Institute of Technology, Madras",
+	  	degree: "B.S. in Data Science and Applications",
+	  	period: "2025",
+	  	cgpa: "Not Applicable (Currently in Semester 1)",
+	  	description:
+	    "Currently pursuing the foundational level of the B.S. in Data Science and Applications program at IIT Madras. Coursework includes mathematics, statistics, computational thinking, and Python programming.",
+	  	location: "Chennai, Tamil Nadu",
+	  	link: "https://study.iitm.ac.in/ds/",
+	  	image: "https://res.cloudinary.com/dyxu6ylng/image/upload/v1763293058/808-440_nrc9fk.png"
+	},
+
+	{
+		id: 2,
 		institution: "Kongu Engineering College",
 		degree: "BE in Computer Science and Engineering",
 		period: "2022 - 2026",
@@ -16,7 +29,7 @@ const education = [
 		image: "https://res.cloudinary.com/dyxu6ylng/image/upload/v1746609174/KEC_x3mgla.jpg",
 	},
 	{
-		id: 2,
+		id: 3,
 		institution: "Kendriya Vidyalaya Gandhigram",
 		degree: "Class XII (CBSE)",
 		period: "2021 - 2022",
@@ -28,7 +41,7 @@ const education = [
 		image: "https://res.cloudinary.com/dyxu6ylng/image/upload/v1746624878/kvs_nwxgel.png",
 	},
 	{
-		id: 3,
+		id: 4,
 		institution: "Kendriya Vidyalaya Gandhigram",
 		degree: "Class X (CBSE)",
 		period: "2019 - 2020",
