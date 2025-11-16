@@ -3,24 +3,23 @@ import { useState, useEffect, useRef } from "react";
 import { Briefcase, Calendar, Building } from "lucide-react";
 
 const experiences = [
-  {
-  id: 5,
-  company: "Combo Square",
-  title: "AI/ML Developer cum Trainer",
-  period: "Sep 2025 - Present",
-  location: "Remote, Kanyakumari, Tamil Nadu",
-  description:
-    "Selected for the position of AI/ML Developer cum Trainer at Combo Square under their Job Program. This role provides real-time project exposure, mentorship, branding experience, software development, design, and marketing involvement.",
-  responsibilities: [
-    "Working on in-house and client-based AI/ML and software development projects",
-    "Training internship and course students on AI/ML concepts and tools",
-    "Attending team meetings and contributing to project discussions",],
-  technologies: ["Artificial Intelligence","Machine Learning","Python","Data Processing","Software Development"],
-  offerLetter:
-    "https://drive.google.com/file/d/1qmXmbZBzzQ7DOXKaA9a4UanUx2XrYHot/view?usp=sharing",
-  completionLetter: "" // Ongoing role
-}
-,
+    {
+    id: 5,
+    company: "Combo Square",
+    title: "AI/ML Developer cum Trainer",
+    period: "Sep 2025 - Present",
+    location: "Remote, Kanyakumari, Tamil Nadu",
+    description:
+      "Selected for the position of AI/ML Developer cum Trainer at Combo Square under their Job Program. This role provides real-time project exposure, mentorship, branding experience, software development, design, and marketing involvement.",
+    responsibilities: [
+      "Working on in-house and client-based AI/ML and software development projects",
+      "Training internship and course students on AI/ML concepts and tools",
+      "Attending team meetings and contributing to project discussions"
+    ],
+    technologies: ["Artificial Intelligence","Machine Learning","Python","Data Processing","Software Development"],
+    offerLetter:"https://drive.google.com/file/d/1qmXmbZBzzQ7DOXKaA9a4UanUx2XrYHot/view?usp=sharing",
+    completionLetter: "" // Ongoing role
+  },
   {
   id: 4,
   company: "Combo Square",
