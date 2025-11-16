@@ -86,11 +86,14 @@ const experiences = [
   }
 ];
 
-const WorkSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+const WorkSection: React.FC = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -101,19 +104,19 @@ const WorkSection = () => {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    observer.observe(el);
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
   return (
-    <section id="work" ref={sectionRef} className="py-20 md:py-32 bg-[#f0eff9] text-[#333333]">
+    <section
+      id="work"
+      ref={sectionRef}
+      className="py-20 md:py-32 bg-[#f0eff9] text-[#333333]"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -128,23 +131,23 @@ const WorkSection = () => {
         </motion.h2>
 
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#7f5af0]/30 transform md:translate-x-[-0.5px]"></div>
-          
+          {/* Timeline line - left on small screens, centered on md+ */}
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-[#7f5af0]/30 transform md:-translate-x-1/2"></div>
+
           <div className="space-y-16">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.id}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
                 className="relative"
               >
                 <div className={`md:flex ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                  {/* Timeline dot */}
-                  <div className="absolute left-[-8px] md:left-1/2 top-0 w-4 h-4 rounded-full bg-[#7f5af0] transform md:translate-x-[-8px] border-2 border-[#f0eff9] z-10"></div>
-                  
-                  {/* Content */}
+                  {/* Timeline dot - positioned to align with the vertical line */}
+                  <div className="absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full bg-[#7f5af0] transform md:-translate-x-1/2 border-2 border-[#f0eff9] z-10"></div>
+
+                  {/* Content column */}
                   <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-10" : "md:pl-10"} pl-10 md:pl-0`}>
                     <div className="bg-white shadow-sm border border-gray-200 rounded-lg p-6 hover:shadow-md transition-all duration-300">
                       <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
@@ -154,14 +157,14 @@ const WorkSection = () => {
                           <span>{exp.period}</span>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-center mb-4 text-[#555555]">
                         <Building size={16} className="mr-2 text-[#7f5af0]" />
                         <span>{exp.company}</span>
                       </div>
-                      
+
                       <p className="text-[#555555] mb-6">{exp.description}</p>
-                      
+
                       <div className="mb-6">
                         <h4 className="text-lg font-medium mb-2 text-[#7f5af0]">Responsibilities:</h4>
                         <ul className="list-disc pl-5 space-y-1 text-[#555555]">
@@ -170,13 +173,13 @@ const WorkSection = () => {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-lg font-medium mb-2 text-[#7f5af0]">Technologies Used:</h4>
                         <div className="flex flex-wrap gap-2">
                           {exp.technologies.map((tech, idx) => (
-                            <span 
-                              key={idx} 
+                            <span
+                              key={idx}
                               className="bg-[#7f5af0]/10 text-[#7f5af0] px-3 py-1 rounded-full text-sm border border-[#7f5af0]/20 hover:bg-[#7f5af0]/20 transition-colors duration-300"
                             >
                               {tech}
@@ -186,7 +189,7 @@ const WorkSection = () => {
                       </div>
 
                       <div>
-                        <br></br>
+                        <br />
                         <h4 className="text-lg font-medium mb-2 text-[#7f5af0]">Documents:</h4>
                         <div className="flex gap-4">
                           {exp.offerLetter && (
