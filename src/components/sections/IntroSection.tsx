@@ -67,7 +67,7 @@ const IntroSection = () => {
             >
               <Button 
                 className="bg-[#7f5af0] hover:bg-[#6644cc] px-8 py-6 rounded-lg text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_15px_rgba(127,90,240,0.5)]"
-                onClick={() => window.open('https://drive.google.com/file/d/1dix2Owy8aBsH_gOfy-Yx5lCf1ArOzHUZ/view?usp=sharing', '_blank')}
+                onClick={() => window.open('https://drive.google.com/file/d/1EdSyltf4qivNx9iTVXy7JB7VPA2e-f3h/view?usp=sharing', '_blank')}
               >
                 <FileText size={20} className="mr-2" />
                 Download Resume
